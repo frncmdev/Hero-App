@@ -14,7 +14,14 @@ public class VillainController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        var value = _context.Villains.ToList();
-        return Ok(value);
+        try
+        {    
+            var value = _context.Villains.ToList();
+            return Ok(value);
+        }
+        catch (System.Exception)
+        {
+            return BadRequest();            
+        }
     }
 }

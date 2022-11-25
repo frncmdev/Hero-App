@@ -6,15 +6,19 @@ using ng_api.Repository;
 [Route("api/[controller]")]
 public class HeroController : ControllerBase 
 {
+    private readonly Random _rndm;
     private readonly NgAssessDbContext _context;
     public HeroController()
     {
         _context = new NgAssessDbContext();
+        _rndm = new Random();
     }
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        var value = _context.Heroes.ToList();
+        Random _rndm = new Random();
+        int idx = _rndm.Next(1,9);
+        var value = _context.Heroes.SingleOrDefault(item => item.HeroId == idx);
         return Ok(value);
     }
 }

@@ -31,7 +31,7 @@ public class MatchUpController: ControllerBase
         _context.MatchUps.Add(matchup);
         try
         {
-            return Ok();
+            return Ok(matchup);
         }
         catch (System.Exception)
         {

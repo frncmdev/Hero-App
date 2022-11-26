@@ -2,18 +2,17 @@
   <div class="header">
     <h1 class="text-center ">FIGHT</h1>
     <h1 class="text-center invis">FIGHT</h1>
+    <div *ngIf="heroData">
+      {{heroData | json}}
 
-  </div>
-  <div class="test" *ngIf="heroDataArray | async as Data">
-    {{Data | json}}
+    </div>
   </div>
   <div class="flexContainer">
     <div class="fight-body">
-      <div class="hero-row" *ngFor="let item of heroDataArray | async as _data">
-        <div class="hero-card">
-          <img src="">
-          <h3 class="text-center">{{_data|json}}</h3>
-        </div>
+      <div class="hero-row">
+        <app-hero></app-hero>
+        <app-hero></app-hero>
+        <app-hero></app-hero>
       </div>
       <div class="middle-row">
         <h1 class="text-center">VS</h1>

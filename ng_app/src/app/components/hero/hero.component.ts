@@ -1,5 +1,5 @@
 import { Hero } from './../../models/hero';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/service/data.service';
 
 @Component({
@@ -8,13 +8,28 @@ import { DataService } from 'src/app/service/data.service';
   styleUrls: ['./hero.component.scss']
 })
 export class HeroComponent implements OnInit {
-  @Input() HeroData!: Hero;
-  constructor()
+  heroData!: Hero;
+  constructor(private _dataService: DataService)
   {
+
   }
 
   ngOnInit(): void {
-    console.log(this.HeroData)
+    this.getComponentHero();
+    this._dataService.hero.subscribe(item => {
+      this.heroData = item;
+    }).unsubscribe();
   }
+  getComponentHero()
+  {
+
+    this._dataService.getHero()
+      .then(() => {console.log("$")})
+      .catch(
+        err => console.error(err)
+      )
+      .finally(() => this._dataService.loading.next(false));
+
+    }
 
 }

@@ -21,4 +21,5 @@ public class HeroController : ControllerBase
         var value = _context.Heroes.SingleOrDefault(item => item.HeroId == idx);
         return Ok(value);
     }
+
 }

@@ -1,7 +1,7 @@
+import { BehaviorSubject } from 'rxjs';
 import { Hero } from './../models/hero';
 import { Matchups } from './../models/matchups';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { Villain } from '../models/villain';
 import { HttpClient } from '@angular/common/http';
 @Injectable({
@@ -9,29 +9,39 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataService {
   // http://localhost:5204/api/hero
+  hero: BehaviorSubject<Hero>
+  loading: BehaviorSubject<boolean>;
   api_base_url: string = "http://localhost:5204/api/"
-  hero: BehaviorSubject<Hero[]>;
-  villains: BehaviorSubject<Villain[]>;
-  Matchups: BehaviorSubject<Matchups[]>;
+
   constructor(private _http: HttpClient) {
-    this.hero = new BehaviorSubject(new Array<Hero>);
-    this.villains = new BehaviorSubject(new Array<Villain>);
-    this.Matchups = new BehaviorSubject(new Array<Matchups>);
+    this.loading = new BehaviorSubject(false);
+    this.hero = new BehaviorSubject({} as Hero)
   }
-  getHeros()
+
+  getHero(): Promise<unknown>
   {
-    for(let i: number = 0; i<3; i++)
-    {
-      this._http.get<Hero>(this.api_base_url+"Hero").subscribe(_item => {
-        let reducer: Hero[] = []
-        this.hero.subscribe(_itm => reducer = _itm)
-        this.hero.next([_item, ...reducer]);
-      });
-    }
+    this.loading.next(true)
+    return new Promise((resolve, reject) => {
+      this._http.get<Hero>(`${this.api_base_url}hero`).subscribe(res => {
+        this.hero.next(res);
+      }, err => {
+        console.error(err);
+        reject(err)
+      })
+    })
 
   }
-  getHero()
+  getVillain()
   {
 
   }
+  getMatchups()
+  {
+
+  }
+  createMatchup()
+  {
+
+  }
+
 }

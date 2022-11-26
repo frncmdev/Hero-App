@@ -23,9 +23,9 @@ export class DataService {
     return this._http.get<Hero>(`${this.api_base_url}hero`);
 
   }
-  getVillain()
+  getVillain(): Observable<Villain>
   {
-
+    return this._http.get<Villain>(`${this.api_base_url}villain`);
   }
   getMatchups()
   {

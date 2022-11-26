@@ -23,12 +23,9 @@ export class HeroComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getComponentHero();
-  }
-  getComponentHero(): void
-  {
     this._dataService.getHero().subscribe(_itm => {this.heroData = _itm})
   }
+
 
 
 }

@@ -14,14 +14,9 @@ public class VillainController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        try
-        {    
-            var value = _context.Villains.ToList();
-            return Ok(value);
-        }
-        catch (System.Exception)
-        {
-            return BadRequest();            
-        }
+        Random _rndm = new Random();
+        int idx = _rndm.Next(1,9);
+        var value = _context.Villains.SingleOrDefault(item => item.VillainId == idx);
+        return Ok(value);
     }
 }

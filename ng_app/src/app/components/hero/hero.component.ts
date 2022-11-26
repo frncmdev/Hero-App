@@ -1,6 +1,7 @@
 import { Hero } from './../../models/hero';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/service/data.service';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-hero',
@@ -8,7 +9,14 @@ import { DataService } from 'src/app/service/data.service';
   styleUrls: ['./hero.component.scss']
 })
 export class HeroComponent implements OnInit {
-  heroData!: Hero;
+  heroData: Hero = {
+    heroId: 0,
+    heroName: '',
+    health: 0,
+    minAttack: 0,
+    maxAttack: 0,
+    imgUrl: ''
+  };
   constructor(private _dataService: DataService)
   {
 
@@ -16,20 +24,11 @@ export class HeroComponent implements OnInit {
 
   ngOnInit(): void {
     this.getComponentHero();
-    this._dataService.hero.subscribe(item => {
-      this.heroData = item;
-    }).unsubscribe();
   }
-  getComponentHero()
+  getComponentHero(): void
   {
+    this._dataService.getHero().subscribe(_itm => {this.heroData = _itm})
+  }
 
-    this._dataService.getHero()
-      .then(() => {console.log("$")})
-      .catch(
-        err => console.error(err)
-      )
-      .finally(() => this._dataService.loading.next(false));
-
-    }
 
 }

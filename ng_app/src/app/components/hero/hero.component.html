@@ -1,5 +1,10 @@
 <div class="hero-card">
-  <img src="">
-  <h3 class="text-center"></h3>
-  {{heroData|json}}
+  <img src="{{heroData.imgUrl}}">
+  <h3 class="text-center">{{heroData.heroName}}</h3>
+  <div class="stats">
+    <ul>
+      <li>Health: {{heroData.health}}</li>
+      <li>Attack Range: {{heroData.minAttack}} - {{heroData.maxAttack}}</li>
+    </ul>
+  </div>
 </div>

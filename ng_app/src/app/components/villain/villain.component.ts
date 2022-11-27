@@ -30,10 +30,14 @@ export class VillainComponent implements OnInit {
   }
   check()
   {
-    if(this._battleService.selectedVillain.villainId == this.villainData.villainId)
+    if(this.villainData.villainId == this._battleService.selectedVillain.villainId)
     {
-      this.status = 1
+      this.status = 1;
+    } else
+    {
+      this.status = 0;
     }
+
   }
 
 }

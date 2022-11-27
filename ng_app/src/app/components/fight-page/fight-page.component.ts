@@ -1,7 +1,10 @@
+import { BattleService } from './../../services/battle.service';
+import { Matchups } from './../../models/matchups';
 import { Hero } from './../../models/hero';
-import { DataService } from './../../service/data.service';
+import { DataService } from '../../services/data.service';
 import { Component, OnInit } from '@angular/core';
-import { of, Observable } from 'rxjs';
+import { of, Observable, ConnectableObservable } from 'rxjs';
+import { Villain } from 'src/app/models/villain';
 
 @Component({
   selector: 'app-fight-page',
@@ -9,11 +12,35 @@ import { of, Observable } from 'rxjs';
   styleUrls: ['./fight-page.component.scss']
 })
 export class FightPageComponent implements OnInit {
-  heroData!: Hero;
-  constructor(private _dataService: DataService) {
+  Matchup!: Matchups;
+  Winner: string = "";
+  constructor(private _dataService: DataService, private _battleService: BattleService) {
   }
   ngOnInit(): void {
   }
+  roll()
+  {
+    this.Matchup = this._battleService.roll();
+    if(this.Matchup.winner == "draw") {
+      this.Winner = "this bout has ended in a draw";
+    } else if (this.Matchup.winner == "hero")
+    {
+      this.Winner = `The winner is ${this.Matchup.hero.heroName}`;
+    } else
+    {
+      this.Winner = `The winner is ${this.Matchup.villain.villainName}`
+    }
+  }
 
-
+  selectHero(idx: number)
+  {
+    this._battleService.selectHero(idx)
+  }
+  selectVillain(idx: number)
+  {
+    this._battleService.selectVillain(idx)
+  }
 }
+
+
+

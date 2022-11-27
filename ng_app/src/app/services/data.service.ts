@@ -1,6 +1,6 @@
 import { BehaviorSubject, ReplaySubject, Observable } from 'rxjs';
-import { Hero } from './../models/hero';
-import { Matchups } from './../models/matchups';
+import { Hero } from '../models/hero';
+import { Matchups } from '../models/matchups';
 import { Injectable } from '@angular/core';
 import { Villain } from '../models/villain';
 import { HttpClient } from '@angular/common/http';

@@ -1,6 +1,7 @@
+import { BattleService } from './../../services/battle.service';
 import { Hero } from './../../models/hero';
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/service/data.service';
+import { DataService } from 'src/app/services/data.service';
 import { ThisReceiver } from '@angular/compiler';
 
 @Component({
@@ -17,13 +18,17 @@ export class HeroComponent implements OnInit {
     maxAttack: 0,
     imgUrl: ''
   };
-  constructor(private _dataService: DataService)
+  constructor(private _dataService: DataService, private _battleService: BattleService)
   {
 
   }
 
   ngOnInit(): void {
-    this._dataService.getHero().subscribe(_itm => {this.heroData = _itm})
+
+    this._dataService.getHero().subscribe(_itm =>
+      {this.heroData = _itm;
+       this._battleService.AddHeros(_itm) }
+      )
   }
 
 

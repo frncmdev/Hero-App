@@ -10,7 +10,7 @@
   width: 100vw;
   .header {
     background-color: skyblue;
-    padding: 2rem 0;
+    padding: 1rem 0;
     display: grid;
     place-items: center;
     isolation: isolate;
@@ -22,7 +22,7 @@
     h1 {
       color: rgba(255, 255, 255, 1);
       z-index: 0;
-      font-size: 4rem;
+      font-size: 2rem;
     }
     .invis {
       color: rgba(255, 192, 203, 0.3) !important;
@@ -54,14 +54,34 @@
       gap: 10rem;
       height: auto;
     }
+    .rollWrapper {
+      display: flex;
+      justify-content: center;
+      padding: 2rem 0;
+      button {
+        transition: all 150ms ease;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 1rem;
+        font-size: 1.5rem;
+        background-color: pink;
+      }
+      button:hover {
+        background-color: skyblue;
+        color: #fefefe;
+        border-radius: 0.75rem;
+        border: 2px #CCC solid;
+
+      }
+
+    }
   }
     .footer {
-      position: absolute;
+
       width: 100vw;
       background-color: skyblue;
-      padding: 1rem 0;
+      padding: 1rem -1rem;
       text-align: center;
-      bottom: 0;
       top: auto;
       border-top: 5px rgb(95, 143, 162) solid;
       a {

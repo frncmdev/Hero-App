@@ -11,7 +11,7 @@ export class DataService {
   // http://localhost:5204/api/hero
   hero: ReplaySubject<Hero>
   loading: BehaviorSubject<boolean>;
-  api_base_url: string = "http://localhost:5204/api/"
+  api_base_url: string = "http://localhost:7172/api/"
 
   constructor(private _http: HttpClient) {
     this.loading = new BehaviorSubject(false);
@@ -20,20 +20,20 @@ export class DataService {
 
   getHero(): Observable<Hero>
   {
-    return this._http.get<Hero>(`${this.api_base_url}hero`);
+    return this._http.get<Hero>(`${this.api_base_url}heroes`);
 
   }
   getVillain(): Observable<Villain>
   {
-    return this._http.get<Villain>(`${this.api_base_url}villain`);
+    return this._http.get<Villain>(`${this.api_base_url}villains`);
   }
   getMatchups()
   {
 
   }
-  createMatchup()
+  createMatchup(_matchup: Matchups)
   {
-
+    return this._http.post(`${this.api_base_url}matchup`, _matchup);
   }
 
 }

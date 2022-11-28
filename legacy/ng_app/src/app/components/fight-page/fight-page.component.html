@@ -1,0 +1,30 @@
+<div class="fightPageWrapper">
+  <div class="header">
+    <h1 class="text-center ">FIGHT</h1>
+    <h1 class="text-center invis">FIGHT</h1>
+  </div>
+  <div class="flexContainer">
+    <div class="fight-body">
+      <div class="hero-row">
+        <app-hero (click)="selectHero(0)"></app-hero>
+        <app-hero (click)="selectHero(1)"></app-hero>
+        <app-hero (click)="selectHero(2)"></app-hero>
+      </div>
+      <div class="middle-row">
+        <h1 class="text-center">VS</h1>
+      </div>
+      <div class="villain-row">
+        <app-villain (click)="selectVillain(0)"></app-villain>
+        <app-villain (click)="selectVillain(1)"></app-villain>
+        <app-villain (click)="selectVillain(2)"></app-villain>
+      </div>
+      <div class="rollWrapper">
+        <button class="rollButtom" (click)="roll()">roll</button>
+        <div class="winnerBox">{{Winner}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <a routerLink="/stats">Stats</a>
+  </div>
+</div>

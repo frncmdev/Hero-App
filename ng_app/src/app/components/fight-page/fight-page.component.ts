@@ -30,6 +30,7 @@ export class FightPageComponent implements OnInit {
     {
       this.Winner = `The winner is ${this.Matchup.villain.villainName}`
     }
+    this._dataService.createMatchup(this.Matchup).subscribe(i => console.log(i))
   }
 
   selectHero(idx: number)

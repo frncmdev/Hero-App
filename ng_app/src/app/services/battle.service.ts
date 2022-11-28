@@ -34,7 +34,7 @@ export class BattleService {
     let hero = this.selectedHero;
     let villain = this.selectedVillain;
     var matchup: Matchups = {
-      matchupId: 0,
+      matchupId: this.getMatchupID(),
       matchupTime: new Date(),
       winner: '',
       heroId: hero.heroId,
@@ -62,6 +62,11 @@ export class BattleService {
     let min = Math.ceil(_actor.minAttack);
     let max = Math.floor(_actor.maxAttack);
     return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  getMatchupID = () => {
+    let min = Math.ceil(0);
+    let max = Math.floor(1000);
+    return Math.floor(Math.random() * (max - min +1) + min)
   }
 
 }

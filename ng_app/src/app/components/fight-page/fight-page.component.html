@@ -6,17 +6,29 @@
   <div class="flexContainer">
     <div class="fight-body">
       <div class="hero-row">
-        <app-hero (click)="selectHero(0)"></app-hero>
-        <app-hero (click)="selectHero(1)"></app-hero>
-        <app-hero (click)="selectHero(2)"></app-hero>
+        <div class="wrapper" [class.selectedHero]="slctHero == 0">
+          <app-hero (click)="selectHero(0)"></app-hero>
+        </div>
+        <div class="wrapper" [class.selectedHero]="slctHero == 1">
+          <app-hero (click)="selectHero(1)"></app-hero>
+        </div>
+        <div class="wrapper" [class.selectedHero]="slctHero == 2">
+          <app-hero (click)="selectHero(2)"></app-hero>
+        </div>
       </div>
       <div class="middle-row">
         <h1 class="text-center">VS</h1>
       </div>
       <div class="villain-row">
-        <app-villain (click)="selectVillain(0)"></app-villain>
-        <app-villain (click)="selectVillain(1)"></app-villain>
-        <app-villain (click)="selectVillain(2)"></app-villain>
+        <div class="wrapper" [class.selectedVillain]="slctVillain == 0">
+          <app-villain (click)="selectVillain(0)"></app-villain>
+        </div>
+        <div class="wrapper" [class.selectedVillain]="slctVillain == 1">
+          <app-villain (click)="selectVillain(1)"></app-villain>
+        </div>
+        <div class="wrapper" [class.selectedVillain]="slctVillain == 2">
+          <app-villain (click)="selectVillain(2)"></app-villain>
+        </div>
       </div>
       <div class="rollWrapper">
         <button class="rollButtom" (click)="roll()">roll</button>

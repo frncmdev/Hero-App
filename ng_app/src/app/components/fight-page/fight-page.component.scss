@@ -38,6 +38,10 @@
       gap: 10rem;
       height: auto;
 
+      .selectedHero
+      {
+        border: 3px skyblue solid !important;
+      }
 
     }
     .middle-row
@@ -53,6 +57,10 @@
       justify-content: center;
       gap: 10rem;
       height: auto;
+      .selectedVillain
+      {
+        border: 3px pink solid !important;
+      }
     }
     .rollWrapper {
       display: flex;
@@ -87,7 +95,7 @@
       a {
         text-decoration: none;
         color: white;
-        font-size: 3rem;
+        font-size: 2rem;
       }
     }
 }

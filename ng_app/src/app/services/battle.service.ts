@@ -1,3 +1,4 @@
+import { BehaviorSubject } from 'rxjs';
 import { Villain } from './../models/villain';
 import { Hero } from './../models/hero';
 import { Injectable } from '@angular/core';
@@ -34,8 +35,8 @@ export class BattleService {
     let hero = this.selectedHero;
     let villain = this.selectedVillain;
     var matchup: Matchups = {
-      matchupId: this.getMatchupID(),
-      matchupTime: new Date(),
+      matchupId: this.generateMatchupID(),
+      matchupTime: `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`,
       winner: '',
       heroId: hero.heroId,
       villainId: villain.villainId,
@@ -56,17 +57,17 @@ export class BattleService {
     {
       matchup["winner"] = 'villain';
     }
+    this.selectedHero = this.Heros[0];
+    this.selectedVillain = this.Villains[0];
+
     return matchup
   }
+  generateMatchupID = (): number => Math.floor(Math.random() * (Math.floor(15000) - Math.ceil(1) +1) + Math.ceil(1));
+
   getAttackPower = (_actor: Hero | Villain):number => {
     let min = Math.ceil(_actor.minAttack);
     let max = Math.floor(_actor.maxAttack);
     return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-  getMatchupID = () => {
-    let min = Math.ceil(0);
-    let max = Math.floor(1000);
-    return Math.floor(Math.random() * (max - min +1) + min)
   }
 
 }

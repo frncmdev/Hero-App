@@ -17,7 +17,14 @@ export class DataService {
     this.loading = new BehaviorSubject(false);
     this.hero = new ReplaySubject();
   }
-
+  getAllHeroes(): Observable<Hero[]>
+  {
+    return this._http.get<Hero[]>(`${this.api_base_url}hero/all`)
+  }
+  getAllVillains(): Observable<Villain[]>
+  {
+    return this._http.get<Villain[]>(`${this.api_base_url}villain/all`)
+  }
   getHero(): Observable<Hero>
   {
     return this._http.get<Hero>(`${this.api_base_url}hero`);
@@ -27,13 +34,13 @@ export class DataService {
   {
     return this._http.get<Villain>(`${this.api_base_url}villain`);
   }
-  getMatchups()
+  getMatchups(): Observable<Matchups[]>
   {
-
+    return this._http.get<Matchups[]>(`${this.api_base_url}matchup`);
   }
-  createMatchup()
+  createMatchup(_matchup: Matchups): any
   {
-
+    return this._http.post(`${this.api_base_url}matchup`, _matchup);
   }
 
 }

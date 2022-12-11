@@ -9,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./villain.component.scss']
 })
 export class VillainComponent implements OnInit {
-  status: number = 0;
   villainData: Villain = {
     villainId: 99,
     villainName: '',
@@ -28,16 +27,6 @@ export class VillainComponent implements OnInit {
     });
 
   }
-  check()
-  {
-    if(this.villainData.villainId == this._battleService.selectedVillain.villainId)
-    {
-      this.status = 1;
-    } else
-    {
-      this.status = 0;
-    }
 
-  }
 
 }

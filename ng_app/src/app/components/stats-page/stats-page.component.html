@@ -1,5 +1,22 @@
-<div class="header">
-  <h1 class="text-center">STATS</h1>
+<div class="statsPageWrapper">
+  <div class="header">
+    <h1 class="text-center ">STATS</h1>
+    <h1 class="text-center invis">STATS</h1>
+  </div>
+  <div class="stats-body" *ngFor="let item of statsData">
+    <div class="statsCard"
+    [class.draw]="item.winner == 'draw'"
+    [class.hero]="item.winner == 'hero'"
+    [class.villain]="item.winner=='villain'" >
+
+    <h1><img src="{{getHeroImage(item.heroId)}}" alt="">{{getHeroName(item.heroId)}} vs <img src="{{getVillainImage(item.villainId)}}" alt="">{{getVillainName(item.villainId)}}</h1>
+      <div class="split">
+        <p>{{item.winner}}s have won</p>
+        <p>{{item.matchupTime}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <a routerLink="/">fight!</a>
+  </div>
 </div>
-<div class="stats-body"></div>
-<a routerLink="/">fight!</a>

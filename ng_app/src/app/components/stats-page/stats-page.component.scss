@@ -4,3 +4,76 @@
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
+.statsPageWrapper
+{
+  height: auto;
+  width: 100vw;
+  .header {
+    background-color: skyblue;
+    padding: 1rem 0;
+    display: grid;
+    place-items: center;
+    isolation: isolate;
+    border-bottom: 5px rgb(95, 143, 162) solid;
+    * {
+      grid-column: 1/-1;
+      grid-row: 1/-1;
+    }
+    h1 {
+      color: rgba(255, 255, 255, 1);
+      z-index: 0;
+      font-size: 2rem;
+    }
+    .invis {
+      color: rgba(255, 192, 203, 0.3) !important;
+      z-index: 1 !important;
+    }
+  }
+  .stats-body
+  {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    .statsCard
+    {
+      padding: 0 2rem;
+      width: 95vw;
+      height: fit-content;
+      h1{
+        padding-top: 0.5rem;
+      }
+      .split {
+        display: flex;
+        justify-content: space-between;
+
+      }
+    }
+    .draw
+    {
+      border: 2px gray solid;
+    }
+    .villain
+    {
+      border: 2px pink solid;
+    }
+    .hero {
+      border: 2px skyblue solid;
+    }
+  }
+  .footer {
+    width: 100vw;
+    background-color: skyblue;
+    padding: 1rem -1rem;
+    text-align: center;
+    top: auto;
+    border-top: 5px rgb(95, 143, 162) solid;
+    a {
+      text-decoration: none;
+      color: white;
+      font-size: 2rem;
+    }
+  }
+}
+.text-center {
+  text-align: center;
+}
